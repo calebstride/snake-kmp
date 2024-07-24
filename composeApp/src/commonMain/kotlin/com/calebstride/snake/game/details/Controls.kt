@@ -18,6 +18,9 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.unit.dp
 import com.calebstride.snake.game.Direction
 
+/**
+ * The controls to change the snakes direction. Either up, down, left or right
+ */
 @Composable
 fun Controls(
     onChangeDirection: (Direction) -> Unit,
@@ -47,6 +50,9 @@ fun Controls(
     }
 }
 
+/**
+ * A button with an arrow showing the direction
+ */
 @Composable
 private fun ArrowButton(
     onClick: () -> Unit,
