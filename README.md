@@ -1,5 +1,8 @@
-# snake-kmp
-A simple snake game using the KMP (Kotlin Multiplatform) technology
+# Snake Game (KMP (Kotlin Multiplatform))
+A simple snake game using the KMP (Kotlin Multiplatform) technology. You can view the game on [my
+website](http://calebstride.com/projects/snake.html).
+
+## Auto Generated
 
 This is a Kotlin Multiplatform project targeting Android, iOS, Web, Desktop.
 
