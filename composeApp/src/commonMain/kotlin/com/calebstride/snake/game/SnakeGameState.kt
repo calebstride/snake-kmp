@@ -56,7 +56,12 @@ class SnakeGameState {
     }
 
     fun updateDirection(direction: Direction) {
+        if (direction.isOpposite(this.direction)) return
         this.direction = direction
+    }
+
+    fun updateGameState(gameState: GameState) {
+        _gameState.value = gameState
     }
 
     private fun randomPosition(): Int {
@@ -67,6 +72,8 @@ class SnakeGameState {
      * Called every time we want to update the game
      */
     suspend fun tick() {
+        delay(delay)
+        if (_gameState.value != GameState.RUNNING) return
         // Figure out the space we're going to move to
         val nextIndex = getNextIndex(snakeIndices.first(), direction)
         val cellType = cellStates[nextIndex].cellType.value
@@ -89,13 +96,12 @@ class SnakeGameState {
                 _gameState.value = GameState.GAME_OVER
             }
         }
-        delay(delay)
     }
 
     private fun getNextIndex(currentIndex: Int, direction: Direction): Int {
         return when (direction) {
             Direction.DOWN -> (currentIndex + WIDTH) % SIZE
-            Direction.UP -> if (currentIndex - WIDTH < 0) currentIndex + SIZE else currentIndex - WIDTH
+            Direction.UP -> if (currentIndex - WIDTH < 0) currentIndex - WIDTH + SIZE else currentIndex - WIDTH
             Direction.LEFT -> moveRightOrLeft(currentIndex, currentIndex - 1, true)
             Direction.RIGHT -> moveRightOrLeft(currentIndex, currentIndex + 1, false)
         }
@@ -126,6 +132,20 @@ class SnakeGameState {
         }
         // No space was empty so we can complete the game
         _gameState.value = GameState.COMPLETE
+    }
+
+    fun restartGame() {
+        _score.value = 0
+        delay = 500L
+        for (cellState in cellStates) {
+            cellState.setCellType(CellType.EMPTY)
+        }
+        while (snakeIndices.isNotEmpty()) {
+            snakeIndices.removeLast()
+        }
+        initStartPosition()
+        createNewFood()
+        _gameState.value = GameState.RUNNING
     }
 }
 

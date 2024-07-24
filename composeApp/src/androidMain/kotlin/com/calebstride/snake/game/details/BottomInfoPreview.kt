@@ -6,5 +6,5 @@ import androidx.compose.ui.tooling.preview.Preview
 @Preview
 @Composable
 private fun BottomInfoPreview() {
-    BottomInfo(onChangeDirection = {}, score = 120)
+    BottomInfo(onChangeDirection = {}, score = 120, onOpenMenu = {})
 }
