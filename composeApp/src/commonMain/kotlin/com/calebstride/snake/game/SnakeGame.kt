@@ -89,7 +89,7 @@ private fun SnakeGrid(snakeGameState: SnakeGameState, modifier: Modifier = Modif
 private fun SnakeCell(cellState: CellState) {
     val colour = when(cellState.cellType.value) {
         CellType.EMPTY -> MaterialTheme.colorScheme.surface
-        CellType.FOOD -> MaterialTheme.colorScheme.secondary
+        CellType.FOOD -> MaterialTheme.colorScheme.tertiary
         CellType.SNAKE ->  MaterialTheme.colorScheme.primary
     }
     Box(modifier = Modifier.size(10.dp).background(color = colour))

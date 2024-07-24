@@ -58,6 +58,7 @@ private fun ColumnScope.PauseMenu(onChangeGameState: (GameState) -> Unit, onRese
     Text(
         text = "Paused.",
         style = MaterialTheme.typography.titleMedium,
+        color = MaterialTheme.colorScheme.onSurface,
         modifier = Modifier.padding(vertical = 12.dp)
     )
     Button(onClick = { onChangeGameState(GameState.RUNNING) }) {

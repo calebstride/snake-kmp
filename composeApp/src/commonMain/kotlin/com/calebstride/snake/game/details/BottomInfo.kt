@@ -39,10 +39,14 @@ private fun ScoreAndMenuButton(score: Int, onOpenMenu: () -> Unit) {
         horizontalAlignment = Alignment.Start,
         modifier = Modifier.height(150.dp).padding(all = 20.dp)
     ) {
-        Text("Score: $score", style = MaterialTheme.typography.titleMedium)
+        Text(
+            text = "Score: $score",
+            color = MaterialTheme.colorScheme.onSurface,
+            style = MaterialTheme.typography.titleMedium
+        )
 
         Button(onClick = onOpenMenu) {
-            Text("Menu")
+            Text(text = "Menu")
         }
     }
 }
