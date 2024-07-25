@@ -76,6 +76,7 @@ private fun ColumnScope.PauseMenu(onChangeGameState: (GameState) -> Unit, onRese
 private fun ColumnScope.GameOver(onResetGame: () -> Unit) {
     Text(
         text = "Game Over",
+        color = MaterialTheme.colorScheme.onSurface,
         style = MaterialTheme.typography.headlineSmall,
         modifier = Modifier.padding(vertical = 12.dp)
     )
